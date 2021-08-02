@@ -1,0 +1,81 @@
+{
+  "name": "misthin-admin-element",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "BWrong",
+    "email": "ibwrong@foxmail.com",
+    "url": "https://github.com/BWrong"
+  },
+  "scripts": {
+    "start": "vue-cli-service serve",
+    "serve": "vue-cli-service serve",
+    "serve:mock": "vue-cli-service serve --mode mock",
+    "build": "vue-cli-service build",
+    "build:report": "vue-cli-service build --report",
+    "lint": "vue-cli-service lint",
+    "commit": "git add . && git-cz",
+    "release": "standard-version --infile docs/CHANGELOG.md"
+  },
+  "dependencies": {
+    "@bwrong/auth-tool": "^1.3.1",
+    "axios": "^0.21.1",
+    "core-js": "^3.13.1",
+    "crypto-js": "^4.0.0",
+    "dayjs": "^1.10.5",
+    "element-ui": "^2.15.2",
+    "js-cookie": "^2.2.1",
+    "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
+    "qs": "^6.10.1",
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@bwrong/mock": "0.0.14",
+    "@vue/cli-plugin-babel": "^4.5.11",
+    "@vue/cli-plugin-eslint": "^4.5.11",
+    "@vue/cli-plugin-router": "^4.5.11",
+    "@vue/cli-plugin-vuex": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-component": "^1.1.1",
+    "compression-webpack-plugin": "^6.1.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.10.0",
+    "git-revision-webpack-plugin": "^3.0.6",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0",
+    "sass": "^1.34.0",
+    "sass-loader": "^10.1.0",
+    "standard-version": "^9.3.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "standard-version": {
+    "skip": {
+      "commit": false
+    }
+  },
+  "gitHooks": {
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "vue-cli-service lint",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{css,less,scss}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
