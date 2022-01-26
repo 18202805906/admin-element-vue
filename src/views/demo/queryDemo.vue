@@ -1,6 +1,6 @@
 <template>
   <div class="query-data">
-    <t-query-condition :opts="opts" add="true"  @submit="conditionEnter" />
+    <t-query-condition :opts="opts" :add="true"  @submit="conditionEnter" />
   </div>
 </template>
 <script>

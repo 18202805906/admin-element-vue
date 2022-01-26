@@ -46,6 +46,7 @@ import {
   Tree,
   Checkbox,
   Upload,
+  CheckboxGroup
 } from 'element-ui';
 
 import '@/assets/styles/rewrite.scss';
@@ -97,6 +98,7 @@ export default (Vue) => {
   Vue.use(Tree);
   Vue.use(Checkbox);
   Vue.use(Upload);
+  Vue.use(CheckboxGroup);
 
   Vue.use(Loading.directive);
   Vue.prototype.$loading = Loading.service;
