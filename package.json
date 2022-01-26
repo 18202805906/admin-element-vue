@@ -1,6 +1,6 @@
 {
   "name": "misthin-admin-element",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "author": {
     "name": "BWrong",
@@ -65,8 +65,7 @@
       "commit": false
     }
   },
-  "gitHooks": {
-  },
+  "gitHooks": {},
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
       "vue-cli-service lint",
