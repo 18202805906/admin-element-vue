@@ -44,7 +44,8 @@ import {
   Popover,
   Cascader,
   Tree,
-  Checkbox
+  Checkbox,
+  Upload,
 } from 'element-ui';
 
 import '@/assets/styles/rewrite.scss';
@@ -95,6 +96,7 @@ export default (Vue) => {
   Vue.use(Cascader);
   Vue.use(Tree);
   Vue.use(Checkbox);
+  Vue.use(Upload);
 
   Vue.use(Loading.directive);
   Vue.prototype.$loading = Loading.service;
