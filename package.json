@@ -31,9 +31,9 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
+    "@bwrong/mock": "0.0.14",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
-    "@bwrong/mock": "0.0.14",
     "@vue/cli-plugin-babel": "^4.5.11",
     "@vue/cli-plugin-eslint": "^4.5.11",
     "@vue/cli-plugin-router": "^4.5.11",
@@ -48,12 +48,12 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.10.0",
     "git-revision-webpack-plugin": "^3.0.6",
-    "lint-staged": "^12.1.2",
     "husky": "^7.0.4",
-    "prettier": "^2.3.0",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.1",
     "sass": "^1.34.0",
     "sass-loader": "^10.1.0",
-    "standard-version": "^9.3.0",
+    "standard-version": "^9.3.2",
     "vue-template-compiler": "^2.6.11"
   },
   "config": {
@@ -69,7 +69,6 @@
   "lint-staged": {
     "**/*.{js,jsx,vue,ts,tsx}": [
       "eslint --fix",
-      
       "git add"
     ],
     "**/*.{css,less,scss}": [
