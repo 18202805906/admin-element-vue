@@ -47,6 +47,7 @@
     "eslint-plugin-vue": "^7.10.0",
     "git-revision-webpack-plugin": "^3.0.6",
     "lint-staged": "^11.0.0",
+    "husky": "^7.0.4",
     "prettier": "^2.3.0",
     "sass": "^1.34.0",
     "sass-loader": "^10.1.0",
@@ -63,7 +64,6 @@
       "commit": false
     }
   },
-  "gitHooks": {},
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
       "vue-cli-service lint",

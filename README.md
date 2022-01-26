@@ -47,4 +47,10 @@ npm run build
 
 # 生产环境打包并生成构建依赖信息
 npm run build:report
+
+# 按照提交规范进行代码提交（有助于生成提交日志）
+npm run commit
+
+# 生成操作记录
+npm run release
 ```
