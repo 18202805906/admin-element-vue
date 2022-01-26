@@ -1,10 +1,4 @@
-/*
- * @Author: Bwrong
- * @Github: https://github.com/BWrong
- * @Date: 2020-04-07 10:30:49
- * @LastEditors: Bwrong
- * @LastEditTime: 2021-04-22 15:10:38
- */
+
 import dayjs from '@/plugins/dayjs';
 import Utf8 from 'crypto-js/enc-utf8';
 import Base64 from 'crypto-js/enc-base64';

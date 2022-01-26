@@ -1,10 +1,3 @@
-/*
- * @Author: Bwrong
- * @Github: https://github.com/BWrong
- * @Date: 2020-04-07 10:30:49
- * @LastEditors: Bwrong
- * @LastEditTime: 2020-12-10 15:35:01
- */
 
 const Storage = localStorage; // 配置使用的存储器
 export function setStorage(key, value) {
