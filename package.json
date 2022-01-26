@@ -69,6 +69,7 @@
   "lint-staged": {
     "**/*.{js,jsx,vue,ts,tsx}": [
       "eslint --fix",
+      
       "git add"
     ],
     "**/*.{css,less,scss}": [
