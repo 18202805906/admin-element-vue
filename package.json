@@ -1,11 +1,9 @@
 {
-  "name": "misthin-admin-element",
-  "version": "0.0.2",
+  "name": "admin-element",
+  "version": "0.0.1",
   "private": true,
   "author": {
-    "name": "BWrong",
-    "email": "ibwrong@foxmail.com",
-    "url": "https://github.com/BWrong"
+    "name": ""
   },
   "scripts": {
     "start": "vue-cli-service serve",
