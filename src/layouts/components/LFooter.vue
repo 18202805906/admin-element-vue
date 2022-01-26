@@ -1,5 +1,5 @@
 <template>
-  <el-footer class="footer"> Misthin Admin Element ©2021 Created by <a href="https://github.com/BWrong" target="_blank">Bwrong</a>  </el-footer>
+  <el-footer class="footer"> Misthin Admin Element ©2021 Created by <a>xxx</a>  </el-footer>
 </template>
 
 <script>
