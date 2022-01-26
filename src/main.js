@@ -7,7 +7,7 @@ import App from './App.vue';
 import components from '@/components';
 import filters from '@/filters';
 import plugins from '@/plugins';
-import config from "@/config";
+import config from '@/config';
 
 Vue.config.productionTip = false;
 
