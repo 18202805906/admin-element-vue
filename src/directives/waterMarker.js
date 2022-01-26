@@ -1,3 +1,4 @@
+// 添加水印
 function addWaterMarker(str, parentNode, font, textColor) {
   // 水印文字，父元素，字体，文字颜色
   var can = document.createElement('canvas');

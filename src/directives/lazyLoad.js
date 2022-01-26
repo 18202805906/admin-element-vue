@@ -1,3 +1,4 @@
+// 图片懒加载
 const LazyLoad = {
   // install方法
   install(Vue, options) {

@@ -1,4 +1,4 @@
-# misthin-admin-element-vue
+# admin-element-vue
 ## 目录规划
 ```js
 |- dist // 构建成果
@@ -53,4 +53,6 @@ npm run commit
 
 # 生成操作记录
 npm run release
+
+#node版本不低于15
 ```

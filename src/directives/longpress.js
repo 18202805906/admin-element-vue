@@ -1,5 +1,6 @@
+// 长按按指令
 const longpress = {
-  bind(el, binding, vNode) {
+  bind(el, binding) {
     if (typeof binding.value !== 'function') {
       throw 'callback must be a function';
     }
@@ -17,7 +18,7 @@ const longpress = {
       }
     };
     // 取消计时器
-    let cancel = (e) => {
+    let cancel = () => {
       if (pressTimer !== null) {
         clearTimeout(pressTimer);
         pressTimer = null;

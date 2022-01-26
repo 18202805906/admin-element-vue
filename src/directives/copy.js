@@ -1,3 +1,4 @@
+// 内容复制
 const copy = {
   bind(el, { value }) {
     el.$value = value;

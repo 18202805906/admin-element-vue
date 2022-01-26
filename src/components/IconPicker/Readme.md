@@ -1,5 +1,5 @@
 # 图标选择
-`./data.json`中为图标配置列表，默认使用了[Ant Design for Vue的图标](https://www.antdv.com/components/icon-cn/)。
+`./data.json`中为图标配置列表，默认使用了element ui中的图标。
 
 ![效果图](https://gitee.com/letwrong/Picture/raw/master/20201217164946.png)
 ## 使用方法

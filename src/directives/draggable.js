@@ -1,3 +1,4 @@
+// 可拖拽
 const draggable = {
   inserted(el) {
     el.style.cursor = 'move';

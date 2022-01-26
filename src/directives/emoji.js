@@ -7,11 +7,11 @@ const trigger = (el, type) => {
   e.initEvent(type, true, true);
   el.dispatchEvent(e);
 };
-
+// 输入框增加emoji
 const emoji = {
-  bind(el, binding, vnode) {
+  bind(el) {
     // 正则规则可根据需求自定义
-    var regRule = /[^\u4E00-\u9FA5|\d|\a-zA-Z|\r\n\s,.?!，。？！…—&$=()-+/*{}[\]]|\s/g;
+    var regRule = /[^\u4E00-\u9FA5|\d|a-zA-Z|\r\n\s,.?!，。？！…—&$=()-+/*{}[\]]|\s/g;
     let $inp = findEle(el, 'input');
     el.$inp = $inp;
     $inp.handle = function () {
