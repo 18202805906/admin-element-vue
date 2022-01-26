@@ -67,12 +67,12 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
+    "**/*.{js,jsx,vue,ts,tsx}": [
       "vue-cli-service lint",
       "prettier --write",
       "git add"
     ],
-    "*.{css,less,scss}": [
+    "**/*.{css,less,scss}": [
       "prettier --write",
       "git add"
     ]
