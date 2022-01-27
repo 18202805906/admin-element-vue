@@ -1,80 +1,34 @@
 <template>
   <div class="page-wrap">
     <el-card class="page-control" shadow="never">
-      <span class="flex" style="justify-content: flex-end">
-        <el-input
-          v-model="searchWord"
-          clearable
-          placeholder="请输入动作名称"
-          style="width: 200px; margin-right: 10px"
-        />
-        <el-select placeholder="请选择日志类型" style="width: 150px" v-model="searchType">
-          <el-option :value="key" v-for="(item, key) in logType" :key="key" :label="item"> </el-option>
-        </el-select>
-        <el-date-picker
-          type="daterange"
-          format="yyyy-MM-DD"
-          style="width: 300px; margin: 0 10px"
-          v-model="searchTimes"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-        ></el-date-picker>
-        <el-button type="primary" @click="handleSearch">搜索</el-button>
-        <el-button type="primary" plain @click="handleReset">重置</el-button>
-      </span>
+      <t-query-condition :opts="opts"   @submit="handleSearch" boolEnter/>
     </el-card>
     <el-card shadow="never">
-      <basis-table
-        ref="table"
-        :data="tableData"
-        size="mini"
+      <t-table  
+        :table="table" 
         border
-        show-index
-        :pagination.sync="pagination"
-        @page-change="getData"
-        v-loading="tableLoading"
+        :columns="columns" 
+        v-loading="tableLoading" 
+        @page-change="pageChange"
+        @size-change="sizeChange"
+        isShowPagination
       >
-        <el-table-column prop="name" label="动作" align="center"> </el-table-column>
-        <el-table-column prop="type" label="类型" align="center" width="150">
-          <template slot-scope="{ row }">
-            {{ logType[row.type] }}
-          </template>
-        </el-table-column>
-        <el-table-column prop="username" label="操作者" width="150"> </el-table-column>
-        <el-table-column prop="path" label="接口地址"> </el-table-column>
-        <el-table-column prop="createTime" label="时间" align="center" width="200"> </el-table-column>
-        <el-table-column type="action" label="操作" width="200" align="center">
-          <template slot-scope="{ row }">
-            <el-button @click="handleView(row)" type="primary" icon="el-icon-view" plain size="mini">详情</el-button>
-          </template>
-        </el-table-column>
-      </basis-table>
+      <!-- 自定义插槽 -->
+      <template #type="{ scope }">{{ logType[scope.row.type] }}</template>
+      </t-table>
     </el-card>
     <el-dialog title="详情" :visible.sync="isShowDetail" width="520px">
-      <el-form label-width="80px" class="detail-form">
-        <el-form-item label="动作:">
-          <span class="field-text">{{ detail.name }}</span>
-        </el-form-item>
-        <el-form-item label="类型:">
-          <span class="field-text">{{ logType[detail.type] }} ( {{ detail.type }} )</span>
-        </el-form-item>
-        <el-form-item label="操作者:">
-          <span class="field-text">{{ detail.username }}</span>
-        </el-form-item>
-        <el-form-item label="时间:">
-          <span class="field-text">{{ detail.createTime }}</span>
-        </el-form-item>
-        <el-form-item label="接口地址:">
-          <span class="field-text">{{ detail.path }}</span>
-        </el-form-item>
-        <el-form-item label="参数:">
-          <el-input class="field-text" type="textarea" readonly :rows="2" :value="detail.parameters"></el-input>
-        </el-form-item>
-        <el-form-item label="返回结果:">
-          <el-input class="field-text" type="textarea" readonly :rows="3" :value="detail.result"></el-input>
-        </el-form-item>
-      </el-form>
+      <t-description
+        :descData="descData"
+        border
+        size="small"
+        :column="2"
+        direction="vertical"
+      >
+        <template #type="scope">
+              {{ logType[scope.value] }} ( {{ scope.value }} )
+        </template>
+      </t-description>
     </el-dialog>
   </div>
 </template>
@@ -87,52 +41,124 @@ export default {
   data() {
     return {
       logType: LOG_TYPE,
-      tableData: [],
-      tableLoading: false,
-      pagination: {
+      // 表格配置
+      table:{
         ...this.$pagination,
-        pageSize: 10
+        firstColumn: { type: 'index', label: '序列' }, // 显示序列号
+        data:[],
+        // 表格内操作列
+        operator: [
+            {
+              text: '详情',
+              type: 'text',
+              fun: this.handleView,
+            },
+          ],
+          // 操作列样式
+          operatorConfig: {
+            fixed: 'right', // 固定列表右边（left则固定在左边）
+            width: 100,
+            label: '操作'
+          }
       },
-      searchWord: '',
-      searchType: '',
-      searchTimes: [],
+      columns: [
+          { prop: 'name', label: '动作', minWidth: '150', sort: true },
+          { prop: 'type', label: '类型', minWidth: '150'},
+          { prop: 'username', label: '操作者', minWidth: '150'},
+          { prop: 'path', label: '接口地址', minWidth: '200'},
+          { prop: 'createTime', label: '时间', minWidth: '200'}
+        ],
+      // 查询配置
+      opts:{
+        searchWord: {
+          label: '动作名称',
+          comp: 'el-input',
+          bind: {}
+        },
+        searchType: {
+          label: '日志类型',
+          comp: 'el-select',
+          bind: {
+          },
+          child: Object.entries(LOG_TYPE).map((e) => {
+            return {
+              comp: 'el-option',
+              value: e[0],
+              bind: {
+                label: e[1],
+                key: e[0]
+              }
+            };
+          })
+        },
+        searchTimes: {
+          label: '日期范围',
+          comp: 'el-date-picker',
+          bind: {
+            type: 'daterange',
+            rangeSeparator: '至',
+            startPlaceholder: '开始日期',
+            endPlaceholder: '结束日期',
+            valueFormat: 'yyyy-MM-dd'
+          }
+        }
+      },
+      tableLoading: false,
       isShowDetail: false,
-      detail: {}
+      descData: [],
+      queryData:{}
     };
   },
   created() {
-    this.getData(1);
+    this.getData();
   },
   methods: {
-    getData(pageNow = 1) {
+    getData() {
       this.tableLoading = true;
       logApi
         .list({
-          pageSize: this.pagination.pageSize,
-          pageNow
+          pageSize: this.table.pageSize,
+          pageNow: this.table.currentPage
         })
         .then((res) => {
-          console.log(res);
-          this.pagination.currentPage = res.current;
-          this.pagination.total = res.total;
-          this.tableData = res.list;
+          this.table.total = res.total;
+          this.table.data = res.list;
           this.tableLoading = false;
         });
     },
-    // 查询
-    handleSearch() {
-      this.getData(1);
+    pageChange(current){
+      this.table.currentPage = current;
+      this.getData();
     },
-    // 重置
-    handleReset() {
-      this.searchWord = '';
-      this.searchType = '';
-      this.searchTimes = [];
-      this.getData(1);
+    sizeChange(size){
+      this.table.pageSize = size;
+      this.getData();
+    },
+    // 查询
+    handleSearch(data) {
+      this.queryData = data;
+      this.table.currentPage = 1;
+      this.getData();
     },
     handleView(row) {
-      console.log(row);
-      this.detail = { ...row };
+      this.descData = [];
+      // 要显示的字段
+      const showInfo = {
+        'name': '动作',
+        'type': '类型',
+        'username': '操作者',
+        'path': '接口地址',
+        'createTime': '时间',
+        'parameters': '参数',
+        'result': '结果'
+      };
+       Object.entries(row).forEach(e =>{
+        if(showInfo[e[0]]){
+          let obj = {label: showInfo[e[0]], value: e[1]};
+          if(e[0] === 'type') obj.valueSlotName='type';
+          this.descData.push(obj);
+        }
+      });
       this.isShowDetail = true;
     }
   }

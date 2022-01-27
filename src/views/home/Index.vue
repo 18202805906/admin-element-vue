@@ -13,6 +13,7 @@
     <calendar-demo></calendar-demo>
     <h5>详情示例</h5>
     <description-demo></description-demo>
+    <table-demo></table-demo>
     </el-card>
   </div>
 </template>
@@ -24,6 +25,7 @@ import FormDemo from '@/views/demo/formDemo.vue';
 import EchartDmeo from '@/views/demo/echartDmeo.vue';
 import CalendarDemo from '@/views/demo/calendarDemo.vue';
 import DescriptionDemo from '@/views/demo/descriptionDemo.vue';
+import TableDemo from '@/views/demo/tableDemo.vue';
 export default {
   name: 'home',
   components:{
@@ -32,7 +34,8 @@ export default {
     FormDemo,
     EchartDmeo,
     CalendarDemo,
-    DescriptionDemo
+    DescriptionDemo,
+    TableDemo
   },
   data(){
     return{

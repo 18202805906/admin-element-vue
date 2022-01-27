@@ -29,7 +29,9 @@
     "nprogress": "^0.2.0",
     "qs": "^6.10.1",
     "vue": "^2.6.11",
+    "vue-clipboard2": "^0.3.3",
     "vue-router": "^3.5.1",
+    "vuedraggable": "^2.24.3",
     "vuex": "^3.6.2",
     "wangeditor": "^4.7.11"
   },

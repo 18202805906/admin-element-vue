@@ -31,6 +31,7 @@ const styleConfig = {
     // 分页设置
     layout: 'prev, pager, next, jumper,->,total',
     background: true,
+    total: 0,
     currentPage: 1,
     pageSize: 10,
     pageSizes: [10, 20, 30, 40]
