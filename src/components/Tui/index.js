@@ -1,13 +1,11 @@
 
 import TUploadFile from './uploadFile';
 import TQueryCondition from './queryCondition';
-import TForm from './form';
-import TSimpleForm from './simple-form';
+import TSimpleForm from './simpleForm';
 // 存储组件列表
 const components = [
   TUploadFile,
   TQueryCondition,
-  TForm,
   TSimpleForm
 ];
 
@@ -29,7 +27,6 @@ export {
   install,
   TUploadFile,
   TQueryCondition,
-  TForm,
   TSimpleForm
 };
 export default {
