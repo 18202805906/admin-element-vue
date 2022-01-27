@@ -9,6 +9,10 @@
     <form-demo></form-demo>
     <h5>图表示例</h5>
     <echart-dmeo></echart-dmeo>
+    <h5>日历组件示例</h5>
+    <calendar-demo></calendar-demo>
+    <h5>详情示例</h5>
+    <description-demo></description-demo>
     </el-card>
   </div>
 </template>
@@ -18,13 +22,17 @@ import queryDemo from '@/views/demo/queryDemo.vue';
 import UploadDemo from '@/views/demo/uploadDemo.vue';
 import FormDemo from '@/views/demo/formDemo.vue';
 import EchartDmeo from '@/views/demo/echartDmeo.vue';
+import CalendarDemo from '@/views/demo/calendarDemo.vue';
+import DescriptionDemo from '@/views/demo/descriptionDemo.vue';
 export default {
   name: 'home',
   components:{
     queryDemo,
     UploadDemo,
     FormDemo,
-    EchartDmeo
+    EchartDmeo,
+    CalendarDemo,
+    DescriptionDemo
   },
   data(){
     return{

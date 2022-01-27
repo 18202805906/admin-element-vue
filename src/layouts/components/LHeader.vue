@@ -11,7 +11,7 @@
       </el-tooltip>
       <el-tooltip :content="`有${count}未读消息`">
         <el-badge :value="Number(count)" :max="99" class="quick">
-          <i style="font-size: 22px" class="el-icon-message"  @click="$router.push('/system/message')"/>
+          <i style="font-size: 22px" class="el-icon-message" />
         </el-badge>
       </el-tooltip>
       <el-tooltip content="API文档">

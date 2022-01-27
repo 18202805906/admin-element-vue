@@ -1,5 +1,5 @@
 <template>
-  <el-footer class="footer"> Misthin Admin Element ©2021 Created by <a>xxx</a>  </el-footer>
+  <el-footer class="footer"> Admin Element ©2022 Created by <a>xxx</a>  </el-footer>
 </template>
 
 <script>

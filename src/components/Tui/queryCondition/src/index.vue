@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import OptComponent from './OptComponent';
+import OptComponent from './optComponent';
 export default {
   name: 'TQueryCondition',
   components: {
