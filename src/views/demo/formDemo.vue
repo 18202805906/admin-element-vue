@@ -26,10 +26,15 @@
               />
             </div>
           </template>
+          <template #editor>
+            <div  id="editor"></div>
+          </template>
         </t-simple-form>
   </div>
 </template>
 <script>
+// 引入wangeditor富文本编辑器,wangeditor具体配置参考https://www.wangeditor.com/
+import E from 'wangeditor';
 export default {
   name: 'TFormDemo',
   data () {
@@ -45,6 +50,8 @@ export default {
           }
         ]
       },
+      // 缓存编辑器
+      editor: undefined,
       // form表单
       formOpts: {
         ref: null,
@@ -101,7 +108,8 @@ export default {
           { label: 'QQ', value: 'qq', type: 'input', comp: 'el-input' },
           { label: '邮箱', value: 'email', type: 'input', comp: 'el-input' },
           { label: '计数器', value: 'number', type: 'inputNumber', bind: { controls: false, min: 2, max: 99 }, comp: 'el-input-number', widthSize: '2' },
-          { label: '描述', value: 'desc', type: 'textarea', comp: 'el-input', className: 't-form-block' }
+          { label: '描述', value: 'desc', type: 'textarea', comp: 'el-input', className: 't-form-block' },
+          { label: '', value: 'editor', slotName: 'editor', className: 't-form-block'  },
         ],
         rules: {
           account: [
@@ -181,6 +189,8 @@ export default {
         this.$data.formOpts.formData,
         this.$options.data().formOpts.formData
       );
+      // 清空编辑器内容
+      this.editor.txt.clear();
       // 清空校验
       this.formOpts.ref.clearValidate();
     },
@@ -190,7 +200,6 @@ export default {
     },
     // 上传头像
     pushUploadItem (val, attachmentType) {
-      console.log(val, attachmentType);
       const attachmentNo = val.res;
       this.uploadFile.uploadObj[attachmentType] = attachmentNo;
       if (!this.uploadFile.uploadObj[attachmentType] || this.uploadFile.uploadObj[attachmentType].length === 0) {
@@ -206,6 +215,10 @@ export default {
       }
       this.uploadFile.fmFileList = tempFileList;
     },
+  },
+  mounted(){
+    this.editor = new E('#editor');
+    this.editor.create();
   }
 };
 </script>

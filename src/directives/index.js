@@ -1,10 +1,12 @@
 import copy from './copy';
 import longpress from './longpress';
 import debounce from './debounce';
+import bindEcharts from './bindEcharts';
 const directives = {
   copy,
   longpress,
-  debounce
+  debounce,
+  bindEcharts
 };
 
 export default {

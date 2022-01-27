@@ -22,6 +22,7 @@
     "core-js": "^3.13.1",
     "crypto-js": "^4.0.0",
     "dayjs": "^1.10.5",
+    "echarts": "^5.3.0",
     "element-ui": "^2.15.2",
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
@@ -29,7 +30,8 @@
     "qs": "^6.10.1",
     "vue": "^2.6.11",
     "vue-router": "^3.5.1",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "wangeditor": "^4.7.11"
   },
   "devDependencies": {
     "@bwrong/mock": "0.0.14",
