@@ -1,5 +1,5 @@
 <template>
-  <el-header class="layout-header">
+  <el-header class="layout-header" :style="{ background: themeColor }">
     <div class="header-left">
       <slot name="logo"></slot>
       <!-- <i class="trigger" :class="collapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'" @click="handleCollapse" /> -->
@@ -17,6 +17,9 @@
       <el-tooltip content="API文档">
         <i class="el-icon-document quick"  @click="goToApi"/>
       </el-tooltip>
+      <el-tooltip content="切换主题">
+        <l-theme-picker class="quick" ref="theme" @themeChange="(val)=>{themeColor = val}"></l-theme-picker>
+      </el-tooltip>
       <el-dropdown  @command="handleClick">
         <div class="user">
           <el-avatar size="medium" icon="el-icon-user-solid" />
@@ -30,6 +33,7 @@
           <el-dropdown-item command="logout"> <i class="el-icon-switch-button" />退出登录 </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
+      
     </div>
     <l-personal-edit v-model="visiblePsd"></l-personal-edit>
   </el-header>
@@ -39,10 +43,13 @@
 import { mapState } from 'vuex';
 import { logout } from '@/router';
 import { getStorage } from '@/utils/storage';
-import LPersonalEdit from './LPersonalEdit';
+import LPersonalEdit from './module/LPersonalEdit';
+import LThemePicker from './module/LThemePicker';
+import config from '@/config';
 export default {
   components: {
-    LPersonalEdit
+    LPersonalEdit,
+    LThemePicker
   },
   props: {
     collapse: {
@@ -59,7 +66,8 @@ export default {
   data() {
     return {
       count: getStorage('count') || 0,
-      visiblePsd: false
+      visiblePsd: false,
+      themeColor: getStorage('el:themeColor') || config.themeColor
     };
   },
   computed: mapState({

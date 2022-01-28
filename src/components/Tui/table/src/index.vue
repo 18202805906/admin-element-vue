@@ -177,7 +177,7 @@
       @current-change="handlesCurrentChange"
       :page-sizes="table.pageSizes || [10, 20, 50, 100]"
       :page-size="table.pageSize"
-      :layout="size?'total, prev, pager, next':'total, sizes, prev, pager, next, jumper'"
+      :layout="sizeSelect?'total, prev, pager, next':'total, sizes, prev, pager, next, jumper'"
       :total="table.total"
       v-bind="$attrs"
       v-on="$listeners"
@@ -252,7 +252,7 @@ export default {
       default: false
     },
     // 是否需要显示切换页条数
-    size: {
+    sizeSelect: {
       type: Boolean,
       default: false
     },
@@ -399,20 +399,20 @@ export default {
     margin-right: calc(2% - 20px);
     background-color: #fff;
   }
-  .el-table th,
-  .el-table td {
-    padding: 8px 0;
-  }
-  .el-table--border th:first-child .cell,
-  .el-table--border td:first-child .cell {
-    padding-left: 5px;
-  }
-  .el-table .cell {
-    padding: 0 5px;
-  }
-  .el-table--scrollable-y .el-table__fixed-right {
-    right: 8px !important;
-  }
+  // .el-table th,
+  // .el-table td {
+  //   padding: 8px 0;
+  // }
+  // .el-table--border th:first-child .cell,
+  // .el-table--border td:first-child .cell {
+  //   padding-left: 5px;
+  // }
+  // .el-table .cell {
+  //   padding: 0 5px;
+  // }
+  // .el-table--scrollable-y .el-table__fixed-right {
+  //   right: 8px !important;
+  // }
   .header_wrap {
     display: flex;
     align-items: center;

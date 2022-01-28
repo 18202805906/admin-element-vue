@@ -1,11 +1,11 @@
 <template>
   <a-layout class="layout">
-    <a-layout-sider :theme="theme" v-model="collapse" :trigger="null" collapsible breakpoint="lg">
+    <a-layout-sider :theme="theme" v-model="collapse" :trigger="null" collapsible breakpoint="lg" >
       <l-logo :mini="collapse" class="logo"></l-logo>
       <l-sider :menus="menus" :theme="theme" :collapse.sync="collapse" :open-keys="openeds" :selected-keys="curtMenuKey"></l-sider>
     </a-layout-sider>
     <a-layout class="layout-main">
-      <l-header :collapse.sync="collapse" :bread-crumb="parentMenus" />
+      <l-header :collapse.sync="collapse" :bread-crumb="parentMenus"/>
       <div class="app-scroll-wrap">
         <l-bread-crumb :data="parentMenus" :collapse.sync="collapse"/>
         <div class="app-main">

@@ -25,6 +25,7 @@ const routerConfig = {
 // 样式相关配置
 const styleConfig = {
   theme: 'light',
+  themeColor: '#1890ff',
   siderOpenWidth: '200px',
   siderCloseWidth: '60px',
   pagination: {

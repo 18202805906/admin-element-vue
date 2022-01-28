@@ -48,7 +48,8 @@ import {
   Upload,
   CheckboxGroup,
   Descriptions,
-  DescriptionsItem
+  DescriptionsItem,
+  ColorPicker
 } from 'element-ui';
 
 import '@/assets/styles/rewrite.scss';
@@ -103,6 +104,7 @@ export default (Vue) => {
   Vue.use(CheckboxGroup);
   Vue.use(Descriptions);
   Vue.use(DescriptionsItem);
+  Vue.use(ColorPicker);
 
   Vue.use(Loading.directive);
   Vue.prototype.$loading = Loading.service;

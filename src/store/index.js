@@ -8,10 +8,19 @@ export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   devtools: process.env.NODE_ENV !== 'production',
   state: {
-    theme: config.theme
+    theme: config.theme,
+    themeColor: config.themeColor
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    SET_THEMECOLOR: (state, themeColor) => {
+      state.themeColor = themeColor;
+    }
+  },
+  actions: {
+    setThemeColor:({commit}, themeColor)=> {
+      commit('SET_THEMECOLOR', themeColor);
+  }
+  },
   modules: {
     user
   }

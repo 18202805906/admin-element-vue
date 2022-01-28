@@ -19,8 +19,12 @@ _新增自定义插槽显示某列数据_
 | ---changeColor          | 整行文字颜色样式控制                                                           | Object       | 否       |
 | ---firstColumn          | 表格首列(序号 index,复选框 selection,单选 radio）排列                          | object       | 否       |
 | ---total                | 数据总条数                                                                     | Number       | 否       |
-| ---pageSize             | 页数量                                                                         | Number       | 否       |
-| ---currentPage          | 是否需要显示切换页条数                                                         | Number       | 否       |
+| ---pageSize             | 页数量                                                                         | Number       | 否    
+| ---pageSizes             | 每页选择框下拉选项                                                              | Array       | 否     |
+| ---currentPage          | 当前页                                                                        | Number       | 
+否       |
+| ---sizeSelect          | 是否需要显示切换页条数                                                          | Boolean       | 
+否       |
 | columns                 | 表头信息                                                                       | Array        | 是       |
 | ----sort                | 排序 （设置：sort:true）                                                       | Boolean      | 否       |
 | ----headerRequired      | 是否显示表头必填'\*'                                                           | Boolean      | 否       |

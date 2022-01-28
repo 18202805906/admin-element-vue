@@ -18,7 +18,7 @@
 </template>
 <script>
 import draggable from 'vuedraggable';
-
+import { setStorage, getStorage } from '@/utils/storage';
 export default {
   name: 'ColumnSet',
   components: {
@@ -50,12 +50,12 @@ export default {
   watch: {
     columnSet (n) {
       this.$emit('columnSetting', n);
-      localStorage.setItem(`t-ui:TTable.columnSet-${this.name || this.title}`, JSON.stringify(n));
+      setStorage(`t-ui:TTable.columnSet-${this.name || this.title}`, n);
     }
   },
   methods: {
     getColumnSetCache () {
-      const value = localStorage.getItem(`t-ui:TTable.columnSet-${this.name || this.title}`);
+      const value = getStorage(`t-ui:TTable.columnSet-${this.name || this.title}`);
       return value ? JSON.parse(value) : this.initColumnSet();
     },
     initColumnSet () {

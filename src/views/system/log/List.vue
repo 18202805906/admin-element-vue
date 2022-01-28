@@ -7,6 +7,7 @@
       <t-table  
         :table="table" 
         border
+        size="mini"
         :columns="columns" 
         v-loading="tableLoading" 
         @page-change="pageChange"
@@ -62,7 +63,7 @@ export default {
           }
       },
       columns: [
-          { prop: 'name', label: '动作', minWidth: '150', sort: true },
+          { prop: 'name', label: '动作', minWidth: '150', sort:true},
           { prop: 'type', label: '类型', minWidth: '150'},
           { prop: 'username', label: '操作者', minWidth: '150'},
           { prop: 'path', label: '接口地址', minWidth: '200'},
