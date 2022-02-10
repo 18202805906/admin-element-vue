@@ -48,13 +48,15 @@ export default () => {
         // return this.activeMenu ? [this.activeMenu, this.$route.path] : [this.$route.path];
       },
       parentMenus() {
-        return this.matchedRoutes
+        
+        const parentMenus = this.matchedRoutes
           .filter((item) => item.meta?.title)
           .map((item) => ({
             icon: item.meta.icon,
             title: item.meta.title,
             url: item.path
           }));
+        return parentMenus;
       },
       openeds() {
         return !this.collapse ? [] : this.parentMenus.map((item) => item.url);

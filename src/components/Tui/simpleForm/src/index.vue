@@ -12,7 +12,7 @@
     <el-form-item
       v-for="(item, index) in formOpts.fieldList"
       :key="index"
-      :prop="item.value"
+      :prop="item.value"  
       :label="item.label"
       :class="[item.className,{'render_label':item.labelRender},{'slot_label':item.slotName}]"
       :rules="item.rules"
@@ -44,7 +44,7 @@
         <template #append v-if="item.append">{{ item.append }}</template>
         <component
           :is="compChildName(item)"
-          v-for="(value, key, index) in formOpts.listTypeInfo[item.list]"
+          v-for="(value, key, index) in formOpts.listTypeInfo ? formOpts.listTypeInfo[item.list] : []"
           :key="index"
           :disabled="value.disabled"
           :label="item.type === 'select-obj'? value: item.type === 'checkbox'? value.value: value[item.arrLabel]"

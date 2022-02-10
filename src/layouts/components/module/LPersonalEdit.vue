@@ -1,38 +1,10 @@
 <template>
   <el-dialog title="修改密码" :visible="value" @close="handleCancel" :close-on-press-escape="false" append-to-body :close-on-click-modal="false" width="500px">
-    <el-form
-      class="form"
-      :model="updatePwdForm"
-      :rules="rules"
-      @keydown="updatePsd('updatePsdForm')"
-      ref="updatePsdForm"
-      label-width="100px"
-    >
-      <el-form-item prop="oldPassword" label="原始密码：">
-        <el-input
-          autocomplete="off"
-          placeholder="请输入原始密码"
-          type="password"
-          v-model="updatePwdForm.oldPassword"
-        ></el-input>
-      </el-form-item>
-      <el-form-item prop="newPassword" label="新密码：">
-        <el-input
-          autocomplete="off"
-          placeholder="请输入新密码"
-          type="password"
-          v-model="updatePwdForm.newPassword"
-        ></el-input>
-      </el-form-item>
-      <el-form-item prop="reNewPassword" label="重复密码：">
-        <el-input
-          autocomplete="off"
-          placeholder="请输入重复密码"
-          type="password"
-          v-model="updatePwdForm.reNewPassword"
-        ></el-input>
-      </el-form-item>
-    </el-form>
+    <t-simple-form
+          :ref-obj.sync="formOpts.ref"
+          :formOpts="formOpts"
+          :widthSize="1"
+    />
     <div slot="footer" class="text-center">
       <el-button
         :loading="loading"
@@ -63,7 +35,7 @@ export default {
       }
     };
     let validateRePassword = (rule, value, callback) => {
-		if (value !== this.updatePwdForm.newPassword) {
+		if (value !== this.formOpts.formData.newPassword) {
 			callback(new Error('两次输入的新密码不一致'));
 		} else {
 			callback();
@@ -71,13 +43,22 @@ export default {
     };
     return {
 		loading: false,
-		updatePwdForm: {
-			oldPassword: '',
-			newPassword: '',
-			reNewPassword: ''
-		},
-		rules: {
-			oldPassword: [
+     // form表单
+    formOpts: {
+      ref: null,
+      labelWidth: '100px',
+      formData: {
+        oldPassword: '',
+        newPassword: '',
+        reNewPassword: ''
+      },
+      fieldList: [
+         { label: '原始密码:', value: 'oldPassword', type: 'password', comp: 'el-input' },
+          { label: '新密码:', value: 'newPassword', type: 'password', comp: 'el-input' },
+          { label: '重复密码:', value: 'reNewPassword', type: 'password', comp: 'el-input'}
+      ],
+      rules: {
+        oldPassword: [
 				{
 					type: 'string',
 					required: true,
@@ -94,7 +75,7 @@ export default {
 				},
 				{ validator: validateNewPassword }
 			],
-			reNewPassword: [
+          reNewPassword: [
 				{
 					type: 'string',
 					required: true,
@@ -103,18 +84,19 @@ export default {
 				},
 				{ validator: validateRePassword }
 			]
-		}
+        },
+    }
     };
   },
   methods: {
     handleCancel() {
       this.$emit('input', false);
     },
-    updatePsd(formName) {
-      this.$refs[formName].validate((valid) => {
+    updatePsd() {
+      this.formOpts.ref.validate((valid) => {
         if (valid) {
           this.loading = true;
-          let { oldPassword, newPassword, reNewPassword } = this.updatePwdForm;
+          let { oldPassword, newPassword, reNewPassword } = this.formOpts.formData;
           let params = {
             oldPassword: cryptoPassword(oldPassword),
             newPassword: cryptoPassword(newPassword),

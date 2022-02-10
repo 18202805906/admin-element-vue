@@ -7,6 +7,7 @@ export default [
     // component: () => import('@/layouts/DefaultLayout.vue'),
     component: () => import('@/layouts/VerticalLayout.vue'),
     meta: {
+      title: '系统管理',
       permission: 'system'
     },
     children: [
@@ -16,6 +17,7 @@ export default [
         name: 'config',
         component: () => import('@/views/system/config/List.vue'),
         meta: {
+          title: '系统配置',
           permission: 'system/config'
         }
       },
@@ -35,6 +37,7 @@ export default [
         name: 'menu',
         component: () => import('@/views/system/menu/List.vue'),
         meta: {
+          title: '菜单管理',
           permission: 'system/menu'
         }
       },
@@ -44,6 +47,7 @@ export default [
         name: 'department',
         component: () => import('@/views/system/department/List.vue'),
         meta: {
+          title: '部门管理',  
           permission: 'system/department'
         }
       },
@@ -53,6 +57,7 @@ export default [
         name: 'role',
         component: () => import('@/views/system/role/List.vue'),
         meta: {
+          title: '角色管理',
           permission: 'system/role'
         }
       },
@@ -62,6 +67,7 @@ export default [
         name: 'user',
         component: () => import('@/views/system/user/List.vue'),
         meta: {
+          title: '用户管理',
           permission: 'system/user'
         }
       },
@@ -71,6 +77,7 @@ export default [
         name: 'message',
         component: () => import('@/views/system/message/List.vue'),
         meta: {
+          title: '站内消息',
           permission: 'system/message'
         }
       },
@@ -80,6 +87,7 @@ export default [
         name: 'log',
         component: () => import('@/views/system/log/List.vue'),
         meta: {
+          title: '用户日志',
           permission: 'system/log'
         }
       }
